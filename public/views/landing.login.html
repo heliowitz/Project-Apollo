@@ -1,0 +1,23 @@
+<p>landing.login.html loaded</p>
+
+{{woah}}
+
+<form ng-submit="login()">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" ng-model = "loginUsername" name="text">
+    </div>
+        
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" ng-model="loginPassword">
+    </div>
+        
+    <input type="submit" value="submit">
+</form>
+
+<br>
+
+<a ui-sref="landing.signup">Signup for an account</a><br>
+<a href="/auth/google">Login with Google</a><br>
+<a ui-sref="landing.splash">HOME</a>

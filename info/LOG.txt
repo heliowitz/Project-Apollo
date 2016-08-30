@@ -1,0 +1,56 @@
+8/26/2016:
+==========
+* Fix Google OAuth $http error when called from controller. Fails when route is called from controller, but not from HTML.
+
+- Finished signup/login angular $http logic
+    * Look into how to make those routes a bit more streamlined. Can you catch results from calls that aren't called from angular controller, but rather from another Express route?
+
+* Add logout functionality into the profileCtrl
+
+? Investigate to see if we can make the routes more modular
+
+* Add to GitHub
+
+
+8/27/2016:
+==========
+> Logout functionality for profileCtrl
+> Start doing the routes and functionality for tasks and shit
+    > Investigate and see if everything is good for the models
+
+> Github integration
+
+~ Google OAuth error
+~ Refactoring routes
+
+? Investigate one-user-at-a-time functionality
+
+- Added logout functionality
+    * one user at a time functionality needs to be set from the BE: each instance of the app in a tab resets the userService, might need to update the model
+
+
+8/28/2016:
+==========
+> Google auth to look the same as local login
+  * Realized that this relies on having the google auth function work from angular $http
+
+> Do routes and functionality for tasks
+  > Model investigation
+
+> Github integration
+
+
+8/29/2016:
+==========
+- Model investigation seems done, at least for now. Will be using O2M reference between task and user models.
+  - Have yet to see how it plays out in displaying....
+  * Implement methods that:
+    1. Display the tasks for each user
+    2. Moves tasks from list to list
+    3. Deletes a task
+    4. Edits a task
+  * Investigate and see if those changes to the BE are immediately seen on angular afterwards... faced this issue before. 
+
+* Running into issues with CS authentication... is Passport only for SS authentication?
+
+> Github needs to be linked up tonight, been behind on that...
