@@ -97,7 +97,6 @@ module.exports = function(app, passport) {
       console.log(req.body);
 
       var newTask = new taskModel({
-        _creator: req.user._id,
         taskTitle: req.body.taskTitle,
         taskTag: req.body.taskTag,
         taskPoints: req.body.taskPoints,

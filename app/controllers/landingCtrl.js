@@ -1,34 +1,34 @@
 angular.module('listApp')
 
-    .controller('landingCtrl', ['$scope', '$http', '$location', '$state', 'userService', function($scope, $http, $location, $state, userService) {
+    .controller('landingCtrl', ['$scope', '$http', '$location', '$state', 'userFactory', function($scope, $http, $location, $state, userFactory) {
 
         /*$scope.doesUserExist = userService.user;*/
-        if (userService.user != null) {
+        if (userFactory.user != null) {
             $scope.doesUserExist = 'user exists';
         } else {
             $scope.doesUserExist = 'user does not exist';
         }
 
         // LOGIN
-        $scope.login = function() {            
+        $scope.login = function() {
             if(this.loginUsername && this.loginPassword) {
                 $http({
-                    method: 'POST', 
+                    method: 'POST',
                     url:'/login',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     data: {
                         username: this.loginUsername,
-                        password: this.loginPassword 
-                    } 
+                        password: this.loginPassword
+                    }
                 })
                 .then(
                     function(res) {
                         $http.get('/profile')
                             .then(
                                 function(res) {
-                                    userService.user = res.data.user;
+                                    userFactory.user = res.data.user;
                                     $state.go("profile.dashboard");
                                 },
                                 function(res) {
@@ -44,18 +44,18 @@ angular.module('listApp')
         };
 
         // SIGNUP
-        $scope.signup = function() {            
+        $scope.signup = function() {
             if(this.loginUsername && this.loginPassword) {
                 $http({
-                    method: 'POST', 
+                    method: 'POST',
                     url:'/signup',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     data: {
                         username: this.loginUsername,
-                        password: this.loginPassword 
-                    } 
+                        password: this.loginPassword
+                    }
                 })
                 .then(
                     function(res) {
@@ -63,7 +63,7 @@ angular.module('listApp')
                             .then(
                                 function(res) {
                                     /*userService.user = res.data.user;*/
-                                    userService.addUser(res.data.user);
+                                    userFactory.user = res.data.user;
                                     $state.go("profile.dashboard");
                                 },
                                 function(res) {
@@ -82,5 +82,5 @@ angular.module('listApp')
         $scope.googleAuth = function() {
             $http.get('/auth/google');
         };
-        
-    }]); 
+
+    }]);

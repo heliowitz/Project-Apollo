@@ -49,8 +49,13 @@
     2. Moves tasks from list to list
     3. Deletes a task
     4. Edits a task
-  * Investigate and see if those changes to the BE are immediately seen on angular afterwards... faced this issue before. 
+  * Investigate and see if those changes to the BE are immediately seen on angular afterwards... faced this issue before.
 
 * Running into issues with CS authentication... is Passport only for SS authentication?
 
 > Github needs to be linked up tonight, been behind on that...
+
+
+8/30/2016:
+==========
+> Implement task methods, and see if anything blows up

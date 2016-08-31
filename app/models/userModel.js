@@ -1,10 +1,29 @@
 // load the things we need
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
-var taskModel = require('./taskModel');
+var Schema = mongoose.Schema;
+// var taskModel = require('./taskModel');
+
+
+var taskSchema = new Schema({
+  taskTitle: {
+		type: 		String,
+		required: 	true
+	},
+	taskTag: {
+		type: 		String
+	},
+	taskPoints: {
+		type: 		Number
+	},
+  taskStatus: {
+    type: String,
+    required: true
+  }
+});
 
 // define the schema for our user model
-var userSchema = mongoose.Schema({
+var userSchema = new Schema({
     local            : {
         username     : String,
         password     : String,
@@ -21,7 +40,11 @@ var userSchema = mongoose.Schema({
     },
     totalCompletedPoints: {
         type: Number
-    }
+    },
+
+    backlogList: [taskSchema],
+    progressList: [taskSchema],
+    doneList: [taskSchema]
 
     // backlogList: [{
     //     type: mongoose.Schema.Types.ObjectId, ref: 'taskModel'

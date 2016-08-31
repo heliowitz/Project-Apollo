@@ -1,9 +1,11 @@
 angular.module('listApp')
 
-    .controller('profileCtrl', ['$scope', '$http', '$location', '$state', 'userService', function($scope, $http, $location, $state, userService) {
-        $scope.user = userService.user;
+    .controller('profileCtrl', ['$scope', '$http', '$location', '$state', 'userFactory', function($scope, $http, $location, $state, userFactory) {
+        $scope.user = userFactory.user;
 
-        if (userService.user != null) {
+        $scope.userFactory = userFactory;
+
+        if (userFactory.user != null) {
             $scope.doesUserExist = 'user exists';
         } else {
             $scope.doesUserExist = 'user does not exist';
@@ -25,39 +27,29 @@ angular.module('listApp')
                 );
         };
 
-        // ADD BACKLOG LIST TASK
-        $scope.addBacklogListTask = function() {
-            console.log('add backlog list task function reached');
-
-            // $http.get('/backlogList')
-            //   .then(
-            //     function() {
-            //       console.log('Successful task callback');
-            //     },
-            //     function() {
-            //       console.log('Failed task callback');
-            //     }
-            //   );
-
-            $http({
-                method: 'POST',
-                url:'/backlogList',
-                data: {
-                    taskTitle: this.backlogListTaskTitle,
-                    taskTag: this.backlogListTaskTag,
-                    taskPoints: this.backlogListTaskPoints,
-                    taskStatus: "backlogList"
-                }
-            })
-              .then(
-                function() {
-                  console.log('Successful task callback');
-                },
-                function() {
-                  console.log('Failed task callback');
-                }
-              );
-
-        };
+        // // ADD BACKLOG LIST TASK
+        // $scope.addBacklogListTask = function() {
+        //     console.log('add backlog list task function reached');
+        //
+        //     $http({
+        //         method: 'POST',
+        //         url:'/backlogList',
+        //         data: {
+        //             taskTitle: this.backlogListTaskTitle,
+        //             taskTag: this.backlogListTaskTag,
+        //             taskPoints: this.backlogListTaskPoints,
+        //             taskStatus: "backlogList"
+        //         }
+        //     })
+        //       .then(
+        //         function() {
+        //           console.log('Successful task callback');
+        //         },
+        //         function() {
+        //           console.log('Failed task callback');
+        //         }
+        //       );
+        //
+        // };
 
     }]);
