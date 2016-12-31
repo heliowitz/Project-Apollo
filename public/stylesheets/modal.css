@@ -1,0 +1,36 @@
+.modal-content {
+  height: 100%;
+  width: 100%;
+}
+
+.modalBox {
+  width: 600px;
+  height: 400px;
+  position: relative;
+}
+
+.large-Modal .modal-dialog{
+  width:600px; height: 400px;
+  position: absolute;
+  top:80px; bottom: 0; left: 0; right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.large-Modal .modal-dialog .modal-content{
+  background-color: blue;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+
+}
+
+.modalTaskTagBar {
+  position: absolute;
+  top: 0px; left: 0px;
+  width: 600px;
+  height: 25px;
+  background-color: green;
+  border-radius: 6px 6px 0px 0px;
+}

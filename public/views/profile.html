@@ -1,27 +1,5 @@
 <h1>profile.html</h1>
 <button ng-click="logout()">LOGOUT</button>
-
 <br>{{doesUserExist}}
-
-<hr>
-<form ng-submit="userFactory.addBacklogTask()">
-    <div class="form-group">
-        <label>Task Title</label>
-        <input type="text" class="form-control" ng-model = "backlogListTaskTitle" name="text">
-    </div>
-
-    <div class="form-group">
-        <label>Task Tag</label>
-        <input type="text" class="form-control" ng-model="backlogListTaskTag">
-    </div>
-
-    <div class="form-group">
-        <label>Task Points</label>
-        <input type="number" class="form-control" ng-model="backlogListTaskPoints">
-    </div>
-
-    <input type="submit" value="submit">
-</form>
-
 <hr>
 <div ui-view></div>

@@ -59,3 +59,37 @@
 8/30/2016:
 ==========
 > Implement task methods, and see if anything blows up
+
+
+9/1/2016:
+=========
+> Implemented first task method, continue...
+
+
+9/2/2016:
+=========
+- Add backlog task method done
+
+> Implement Edit function
+> Implement Remove function
+
+> Will require some aesthetic changes to how list is displayed...
+
+
+9/4/2016:
+=========
+> Going to add some more factories, each for lists, and one for factory...
+
+> Make add task dialog disappear and appear as needed
+  > Then, you can implement the appear/disappear dialog for edits.
+  > This will help to determine if it's ok to use the same ng-model for forms of adding and editing
+
+
+9/8/2016:
+=========
+> Going to implement edit function for tasks
+  - To properly implement the edit function, might be better to try to incorporate it WITH Angular UI modals first...
+
+> Implement the add and remove functions for the other lists as well
+> Implement the change list function
+  - This might require more separation of the factory: user, then list factories

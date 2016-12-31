@@ -1,4 +1,5 @@
 var taskModel = require('../models/taskModel');
+var userModel = require('../models/userModel');
 var path = require('path');
 
 module.exports = function(app, passport) {
@@ -86,34 +87,111 @@ module.exports = function(app, passport) {
         console.log('logout route called');
         req.logout();
         res.sendStatus(200);
-        /*res.redirect('/');*/
     });
+
+
 
     // GET ALL TASKS FOR USER ---
     // --------------------------
 
     app.post('/backlogList', isLoggedIn, function(req, res) {
-      console.log(req.user);
-      console.log(req.body);
-
-      var newTask = new taskModel({
+      var newTask = {
         taskTitle: req.body.taskTitle,
         taskTag: req.body.taskTag,
         taskPoints: req.body.taskPoints,
-        taskStatus: req.body.taskStatus
-      });
+        taskStatus: req.body.taskStatus,
+        taskOrder: req.body.taskOrder
+      };
 
-      newTask.save(function(err) {
+      req.user.backlogList.push(newTask);
+
+      req.user.save(function(err, data) {
         if(err) {
           console.log(err.toString());
-          res.json({error: err.toString()});
+          console.log('FAILED: /backlogList POST, routes.js');
         }
-        else {
-          res.json({message: "Successfully added new backlog task!"});
-        }
-      });
-
+        console.log('SUCCESS: /backlogList POST, routes.js');
+        res.json(data.backlogList);
+      })
     });
+
+
+
+    app.put('/deleteBacklogListTask', isLoggedIn, function(req, res) {
+      console.log(req.body);
+      userModel.findByIdAndUpdate(
+        {"_id": req.user._id},
+        { $pull: {
+          "backlogList": {
+            "_id": req.body.taskId
+          }}
+        },
+        function(err, docs) {
+          if(err) {
+            res.json({error: err.toString()});
+          } else {
+            res.json(docs.backlogList);
+          }
+        }
+      );
+    });
+
+    app.put('/editBacklogListTask', isLoggedIn, function(req, res) {
+      console.log(req.body);
+      userModel.findOneAndUpdate(
+        {"_id": req.user._id, "backlogList._id": req.body.taskId},
+        { $set: {
+            "backlogList.$.taskTitle": req.body.taskTitle,
+            "backlogList.$.taskTag": req.body.taskTag,
+            "backlogList.$.taskPoints": req.body.taskPoints
+          }
+        },
+        function(err, docs) {
+          if(err) {
+            console.log('Shit got fucked fam');
+            console.log(err.toString());
+            res.json({error: err.toString()});
+          } else {
+            console.log(docs.backlogList);
+            res.json(docs.backlogList);
+          }
+        }
+      );
+    });
+
+    // VERY EXPERIMENTAL SHIT
+    app.put('/backlogList', isLoggedIn, function(req, res) {
+      console.log(req.body);
+      userModel.findOneAndUpdate(
+        {"_id": req.user._id},
+        { $set: {
+            "backlogList": req.body.backlogList
+          }
+        },
+        function(err, docs) {
+          if(err) {
+            console.log('Shit got fucked fam');
+            console.log(err.toString());
+            res.json({error: err.toString()});
+          } else {
+            console.log(docs.backlogList);
+            res.json(docs.backlogList);
+          }
+        }
+      );
+    });
+
+    app.get('/backlogList', isLoggedIn, function(req, res) {
+      res.json(req.user.backlogList);
+    });
+
+
+    // app.put('/moveTaskToProgressList', isLoggedIn, function(req, res) {
+    //   console.log('CALLED: routes, moveTaskToProgressList');
+    //   userModel.findByIdAndUpdate(
+    //
+    //   );
+    // });
 
     /*app.route('/tasks')
         // Gets all tasks

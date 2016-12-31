@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, 'app/services'))); //TODAY
 app.use(express.static(path.join(__dirname, 'app'))); //TODAY
 app.use(express.static(path.join(__dirname, 'public/views')));
 app.use(express.static(path.join(__dirname, 'public/stylesheets')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.set('views', path.join(__dirname, 'public/views'));
 

@@ -1,0 +1,155 @@
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.simpleDemo {
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 300px;
+}
+
+.simpleDemo ul[dnd-list],
+.simpleDemo ul[dnd-list] > li {
+	position: relative;
+
+}
+
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+.simpleDemo ul[dnd-list] {
+    min-height: 42px;
+    padding-left: 0px;
+}
+
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+.simpleDemo ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+.simpleDemo ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
+}
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+.simpleDemo ul[dnd-list] li{
+    background-color: #fff;
+    border: 1px solid #ddd;
+
+		height: 92px;
+		width: 302px;
+
+		line-height: normal;
+
+		position: relative;
+
+
+}
+
+/*.simpleDemo ul[dnd-list] li:hover .taskOpenModalButton {
+	visibility: visible;
+}*/
+
+
+
+
+/**
+ * Show selected elements in green
+ */
+.simpleDemo ul[dnd-list] li.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.taskInfoBox {
+	background-color: grey;
+	width: 40px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	float: left;
+}
+
+.taskContainer {
+	background-color: lightgray;
+	height: 50px;
+	width: 50px;
+}
+
+.taskTagBar {
+	background-color: lightgrey;
+	height: 90px;
+	width: 5px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.taskPriorityBox {
+	background-color: lightgrey;
+	position: absolute;
+	top: 12px;
+	left: 13px;
+	height: 16px;
+	width: 16px;
+}
+
+.taskPointsBox {
+	background-color: lightgrey;
+	position: absolute;
+	top: 34px;
+	left: 13px;
+	height: 16px;
+	width: 16px;
+}
+
+.taskTagBox {
+	background-color: lightgrey;
+	position: absolute;
+	top: 12px;
+	left: 37px;
+	height: 16px;
+	width: 247px;
+}
+
+.taskTitleBox {
+	/*background-color: lightgrey;*/
+	position: absolute;
+	top: 34px;
+	left: 37px;
+	height: 50.4px;
+	width: 247px;
+	overflow: hidden;
+}
+
+.taskOpenModalButton {
+	position: absolute;
+	z-index: 50;
+	background-color: red;
+	height: 18px;
+	width: 18px;
+	padding: 4px;
+	top: 3px;
+	right:3px;
+	visibility: hidden;
+}

@@ -19,6 +19,10 @@ var taskSchema = new Schema({
   taskStatus: {
     type: String,
     required: true
+  },
+  taskOrder: {
+    type: Number,
+    required: true
   }
 });
 

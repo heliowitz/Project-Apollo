@@ -1,7 +1,7 @@
-angular.module('listApp', ['ui.router'])
+angular.module('listApp', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'dndLists'])
 
     .config(function($stateProvider, $urlRouterProvider) {
-        
+
         $urlRouterProvider.when("", "/home/splash");
         $urlRouterProvider.otherwise('/home/splash');
 
@@ -27,7 +27,7 @@ angular.module('listApp', ['ui.router'])
                     templateUrl: 'landing.splash.html'
                 })
 
-            // Profile states    
+            // Profile states
             .state('profile', {
                 abstract: true,
                 url: '/profile',
@@ -36,8 +36,13 @@ angular.module('listApp', ['ui.router'])
             })
                 .state('profile.dashboard', {
                     url: '/dashboard',
-                    templateUrl: 'profile.dashboard.html'
+                    templateUrl: 'profile.dashboard.html',
+                    resolve: {
+                      backlogListPromise: ['userFactory', function(userFactory) {
+                        return userFactory.getBacklogList();
+                      }]
+                    }
                 });
-            
+
 
     });

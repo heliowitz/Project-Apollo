@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html ng-app="listApp">
     <head>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.1.3.js"></script>
+
+        <script src="angular-drag-and-drop-lists.js"></script>
+        <!-- <script type="text/javascript" src="../angular-drag-and-drop-lists.min.js"></script> -->
 
         <script src="core.js"></script>
         <script src="landingCtrl.js"></script>
         <script src="profileCtrl.js"></script>
+        <script src="editTaskModalCtrl.js"></script>
         <script src="userFactory.js"></script>
 
         <link rel="stylesheet" href="landing.css"></script>
+        <link rel="stylesheet" href="profileLists.css"></script>
+        <link rel="stylesheet" href="modal.css"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
     </head>
 
     <div ui-view></div>

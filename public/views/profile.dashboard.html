@@ -1,14 +1,116 @@
-<p>profile.dashboard.html loaded</p>
+<!-- <p>profile.dashboard.html loaded</p> -->
+<!-- <button tooltip-placement="top" uib-tooltip="top" type="button" class="btn btn-default">Tooltip</button>
 
-<p>{{user._id}}</p>
-<p>{{user.local.username}}</p>
-<p>{{user.local.password}}</p>
+-->
 
-<br>
 
-<p>{{user.google.id}}</p>
-<p>{{user.google.token}}</p>
-<p>{{user.google.email}}</p>
-<p>{{user.google.name}}</p>
+<!-- <div ng-repeat="backlogTask in user.backlogList | orderBy: '-taskOrder'">
+  <div>{{backlogTask.taskTitle}} : {{backlogTask.taskTag}} : {{backlogTask.taskPoints}}</div>
+  {{$index}} : {{backlogTask.taskOrder}}
+  <button ng-click="openModal(backlogTask)">Edit</button>
+  <button ng-click="userFactory.deleteBacklogTask(backlogTask._id)">Delete</button>
+</div> -->
+
+<!-- <div class="simpleDemo row">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List</h3>
+                    </div>
+
+                    <div>
+                      <ul dnd-list="list">
+                          <li ng-repeat="item in user.backlogList | orderBy: 'taskOrder'"
+                              dnd-draggable="item"
+                              dnd-moved="user.backlogList.splice($index, 1)"
+                              dnd-effect-allowed="move"
+                              >
+                              {{item.taskTitle}} : {{$index}} : {{item.taskOrder}}
+                          </li>
+                      </ul>
+                    </div>
+
+                </div>
+
+        </div> -->
+
+
+<!-- <hr>
+
+<div ng-repeat="progressTask in user.progressList">
+  <div>{{progressTask.taskTitle}} : {{progressTask.taskTag}} : {{progressTask.taskPoints}}</div>
+</div>
 
 <hr>
+
+<div ng-repeat="doneTask in user.doneList">
+  <div>{{doneTask.taskTitle}} : {{doneTask.taskTag}} : {{doneTask.taskPoints}}</div>
+</div> -->
+
+
+<div class="simpleDemo">
+<div class="row">
+
+
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List {{listName}}</h3>
+                    </div>
+                    <div>
+                      <ul dnd-list="list">
+                          <!-- The dnd-draggable directive makes an element draggable and will
+                               transfer the object that was assigned to it. If an element was
+                               dragged away, you have to remove it from the original list
+                               yourself using the dnd-moved attribute -->
+                          <li ng-repeat="item in list"
+                              dnd-draggable="item"
+                              dnd-moved="list.splice($index, 1)"
+                              dnd-effect-allowed="move"
+                              ng-click="openModal(item)"
+                              >
+                              <!-- <div>
+                              <div class="taskInfoBox">{{item.taskTitle}}</div>
+                              <div class="taskInfoBox">{{item.taskTag}}</div>
+                              <div class="taskInfoBox">{{item.taskPoints}}</div>
+                            </div> -->
+
+                            <!-- <div class="taskContainer">
+                              {{item.taskTitle}} : {{item.taskTag}} : {{item.taskPoints}}
+                            </div> -->
+
+                            <div class="taskTagBar"></div>
+                            <div class="taskPriorityBox"></div>
+                            <div class="taskPointsBox">{{item.taskPoints}}</div>
+
+                            <div class="taskTagBox">{{item.taskTag}}</div>
+                            <!-- <div class="taskOpenModalButton" ng-click="openModal(item)"></div> -->
+                            <div class="taskTitleBox">{{item.taskTitle}}</div>
+
+                          </li>
+                      </ul>
+                    </div>
+
+
+                    <button ng-if="!showAddBacklogTaskDialog" ng-click="toggleAddBacklogTaskDialog(true)">Add Task</button>
+                    <form ng-if="showAddBacklogTaskDialog" ng-submit="userFactory.addBacklogTask()">
+
+                            <label>Title</label><input type="text" class="form-control" ng-model = "userFactory.backlogListTaskTitle" name="text">
+
+                            <label>Tag</label><input type="text" class="form-control" ng-model="userFactory.backlogListTaskTag">
+
+                            <label>Points</label><input type="number" class="form-control" ng-model="userFactory.backlogListTaskPoints">
+
+                        <input type="submit" value="submit">
+                    </form>
+                    <button ng-if="showAddBacklogTaskDialog" ng-click="toggleAddBacklogTaskDialog(false)">Cancel</button>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+      </div>
